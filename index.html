@@ -1,0 +1,108 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <link rel="stylesheet" href="https://s3-us-west-1.amazonaws.com/patterns.esri.com/files/calcite-web/1.2.5/css/calcite-web.min.css">
+    <link rel="stylesheet" href="https://js.arcgis.com/4.13/esri/css/main.css">
+    <link rel="stylesheet" href="./css/boilerplate.css">
+    <script type="text/javascript" src="./js/dojoConfig.js"></script>
+    <script type="text/javascript" src="https://js.arcgis.com/4.13/"></script>
+    <script type="text/javascript">
+      require([
+        "boilerplate",
+        "dojo/text!config/config.json",
+        "dojo/text!boilerplate/settings.json",
+        "application",
+        "dojo/domReady!"
+      ], function (Boilerplate, configSettings, boilerplateSettings, app) {
+
+        new Boilerplate(JSON.parse(configSettings), JSON.parse(boilerplateSettings)).then((boilerplateResponse) => {
+          try {
+            const exampleApp = new app();
+            exampleApp.init(boilerplateResponse);
+          } catch (error) {
+            alert(JSON.stringify(error));
+          }
+        });
+
+      });
+    </script>
+  </head>
+  <body>
+
+    <!-- DETAILS -->
+    <div class="js-modal modal-overlay" data-modal="app-details-dialog">
+      <div class="modal-content column-12" aria-labelledby="modal" role="dialog">
+        <span class="js-modal-toggle esri-interactive icon-ui-close right" aria-label="close-modal"></span>
+        <h3 class='trailer-half'>Boilerplate Template and Calcite Web</h3>
+        <p>This application template loads a web map or web scene and provides basic mapping capabilities via the ArcGIS API for JavaScript 4.x.</p>
+        <div>This application is built using:
+          <ul>
+            <li>
+              <a href="https://developers.arcgis.com/javascript/" target="_blank">Esri ArcGIS API for Javascript 4.x</a>
+            </li>
+            <li>
+              <a href="https://github.com/Esri/application-boilerplate-js" target="_blank">Esri Application Boilerplate Template</a>
+            </li>
+            <li>
+              <a href="http://esri.github.io/calcite-web/" target="_blank">Esri Calcite Web framework</a>
+            </li>
+          </ul>
+        </div>
+        <img src="./images/esri_science_of_where.png" class="left">
+        <div class="text-right">
+          <button class="btn js-modal-toggle">OK</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- BODY WRAPPER -->
+    <div id="main-container" class="wrapper">
+
+      <!-- TOP NAVIGATION -->
+      <header class="top-nav">
+        <div class="grid-container">
+          <div class="column-24">
+
+            <!-- APP TITLE -->
+            <span id="app-title-node" class="top-nav-title text-blue"></span>
+
+            <!-- MAP AND CONTENT -->
+            <nav class="top-nav-list" role="navigation" aria-labelledby="topnav">
+              <!--<span class="top-nav-link esri-interactive js-drawer-toggle" data-drawer="top-nav">Map</span>-->
+              <a class="top-nav-link" href="http://www.arcgis.com/home/item.html?id=cb1886ff0a9d4156ba4d2fadd7e8a139" target="_blank">Learn more...</a>
+            </nav>
+
+            <!-- APP DETAILS -->
+            <nav id="app-details-node" class="top-nav-list margin-left-1 right" role="navigation">
+              <span id="last-update-node" class="top-nav-link">Latest Observation Time:&nbsp;<span id="last-update-label" class="text-blue avenir-demi font-size--3"></span></span>
+              <span class="top-nav-link icon-ui-description js-modal-toggle esri-interactive" data-modal="app-details-dialog"></span>
+            </nav>
+
+          </div>
+        </div>
+      </header>
+
+      <!-- REST OF BODY -->
+      <div class="grid-container leader-half trailer-half">
+        <div class="column-24">
+          <div id="viewDiv"></div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- LOADING -->
+    <div id="loading-node" class="loader padding-leader-0 padding-trailer-0">
+      <div class="loader-bars"></div>
+      <div class="loader-text font-size--3">Updating...</div>
+    </div>
+
+    <!-- NOTIFICATIONS -->
+    <div id="notifications-node"></div>
+
+  </body>
+</html>
